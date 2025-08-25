@@ -1,11 +1,11 @@
-/* ======== GLOBAL STYLES & VARIABLES ======== */
+/* ======== GLOBAL STYLES & VARIABLES (THEME: STELLAR & MODERN) ======== */
 :root {
-    --primary-color: #4a148c; /* Deep Purple */
-    --secondary-color: #7B2CBF; /* Lighter Purple */
-    --accent-color: #ff5722; /* Vibrant Orange for CTAs */
-    --dark-bg: #1a1a1a;
-    --light-bg: #f8f9fa;
-    --text-light: #ffffff;
+    --primary-color: #0d0c1d;     /* Deep Cosmic Blue */
+    --secondary-color: #6a0dad;   /* Galactic Purple */
+    --accent-color: #00f6ff;      /* Vibrant Cyber Teal */
+    --dark-bg: #0d0c1d;
+    --glass-bg: rgba(22, 22, 38, 0.6); /* Semi-transparent glass effect */
+    --text-light: #f0f0f0;
     --text-dark: #333333;
     --font-headings: 'Poppins', sans-serif;
     --font-body: 'Roboto', sans-serif;
@@ -14,9 +14,23 @@
 body {
     margin: 0;
     font-family: var(--font-body);
-    color: var(--text-dark);
+    color: var(--text-light);
     line-height: 1.7;
-    background-color: var(--text-light);
+    background-color: var(--dark-bg);
+    overflow-x: hidden; /* Prevent horizontal scroll from star animations */
+    background-image:
+        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+        radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
+        radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
+    background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+    background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+    animation: twinkle 15s infinite linear;
+}
+
+@keyframes twinkle {
+    from { background-position: 0 0, 40px 60px, 130px 270px, 70px 100px; }
+    to { background-position: -550px 0, -310px 60px, -120px 270px, -80px 100px; }
 }
 
 .container {
@@ -33,58 +47,62 @@ body {
 /* ======== TYPOGRAPHY ======== */
 h1, h2, h3 {
     font-family: var(--font-headings);
-    color: var(--primary-color);
+    color: var(--text-light);
     font-weight: 700;
 }
 h2.section-title {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(173, 216, 230, 0.3); /* Light blue glow */
 }
 .section-subtitle {
     text-align: center;
     max-width: 700px;
     margin: 0 auto 40px auto;
     font-size: 1.1rem;
-    color: #666;
+    color: #a9a9b3;
 }
 
 /* ======== BUTTONS ======== */
 .cta-button {
     display: inline-block;
-    background: linear-gradient(90deg, var(--accent-color), #f78c6b);
-    color: var(--text-light);
+    background: var(--accent-color);
+    color: var(--primary-color);
     padding: 18px 35px;
     border-radius: 50px;
     text-decoration: none;
     font-weight: bold;
     font-size: 1.1rem;
     text-align: center;
-    box-shadow: 0 10px 20px rgba(255, 87, 34, 0.3);
+    box-shadow: 0 0 20px rgba(0, 246, 255, 0.5);
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
 }
 .cta-button:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 25px rgba(255, 87, 34, 0.4);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 0 35px rgba(0, 246, 255, 0.8);
 }
 .cta-button-secondary {
-    background: var(--text-light);
+    background: transparent;
     color: var(--accent-color);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 0 15px rgba(0, 246, 255, 0.3);
 }
 .cta-button-secondary:hover {
-     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+     background: var(--accent-color);
+     color: var(--primary-color);
 }
 
 
 /* ======== HERO SECTION ======== */
 .hero-section {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(rgba(13, 12, 29, 0.8), rgba(13, 12, 29, 1)), url(https://images.pexels.com/photos/110854/pexels-photo-110854.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2) no-repeat center center/cover;
     color: var(--text-light);
     padding: 100px 0;
     text-align: center;
+    border-bottom: 2px solid var(--accent-color);
 }
 .hero-headline {
     font-size: 3.5rem;
@@ -92,6 +110,7 @@ h2.section-title {
     color: var(--text-light);
     margin: 0 auto 20px auto;
     max-width: 800px;
+    text-shadow: 0 0 15px rgba(0, 246, 255, 0.5);
 }
 .hero-subheadline {
     font-size: 1.2rem;
@@ -115,31 +134,46 @@ h2.section-title {
 
 /* ======== URGENCY BAR ======== */
 .urgency-bar {
-    background-color: var(--dark-bg);
+    background-color: #000;
     color: var(--text-light);
     text-align: center;
     padding: 15px 0;
     font-size: 1.1rem;
+    border-bottom: 1px solid var(--accent-color);
 }
 #countdown-timer {
-    color: #ffeb3b; /* Yellow for contrast */
+    color: var(--accent-color);
+    font-weight: bold;
 }
 
 /* ======== GENERAL SECTION STYLES ======== */
 .section-padded {
     padding: 80px 0;
+    position: relative; /* For potential future pseudo-elements */
 }
-.section-dark {
-    background-color: var(--dark-bg);
-    color: var(--text-light);
+/* Removing dark/light sections as we are on a consistent dark theme now */
+.section-dark, .section-highlight {
+    background: transparent; /* All sections on the main dark bg */
 }
 .section-dark .section-title, .section-dark h3 {
     color: var(--text-light);
 }
-.section-highlight {
-    background-color: var(--light-bg);
-}
 
+/* ======== BENEFITS GRID & CARDS (Glassmorphism) ======== */
+.benefit-item, .testimonial-card, .bonus-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 30px;
+    transition: all 0.3s ease;
+}
+.benefit-item:hover, .testimonial-card:hover, .bonus-card:hover {
+    transform: translateY(-10px);
+    border: 1px solid rgba(0, 246, 255, 0.5);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
 
 /* ======== BENEFITS GRID ======== */
 .benefits-grid {
@@ -149,16 +183,14 @@ h2.section-title {
     margin-bottom: 40px;
 }
 .benefit-item {
-    background: var(--light-bg);
-    padding: 20px;
-    border-radius: 10px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
     font-weight: 500;
 }
 .benefit-item i {
-    color: var(--primary-color);
+    color: var(--accent-color);
+    font-size: 1.5rem;
 }
 
 /* ======== TESTIMONIALS ======== */
@@ -168,31 +200,29 @@ h2.section-title {
     gap: 30px;
 }
 .testimonial-card {
-    background: #2a2a2a;
-    padding: 30px;
-    border-radius: 15px;
     text-align: center;
-    border-top: 5px solid var(--secondary-color);
+    border-top: 4px solid var(--secondary-color);
 }
 .testimonial-img {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    border: 3px solid var(--secondary-color);
+    border: 3px solid var(--accent-color);
     margin-bottom: 20px;
 }
 .testimonial-text {
     font-style: italic;
     margin-bottom: 20px;
+    color: #ccc;
 }
 .testimonial-author {
     font-weight: bold;
-    color: #ccc;
+    color: var(--text-light);
 }
 
 /* ======== ACCORDION (For Content & FAQs) ======== */
 .accordion-item {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 .accordion-header {
     width: 100%;
@@ -206,13 +236,18 @@ h2.section-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: var(--primary-color);
+    color: var(--text-light);
+    transition: background-color 0.3s ease;
+}
+.accordion-header:hover {
+    background-color: var(--glass-bg);
 }
 .accordion-header::after {
     content: '\f078'; /* Font Awesome down arrow */
     font-family: 'Font Awesome 6 Free';
     font-weight: 900;
     transition: transform 0.3s ease;
+    color: var(--accent-color);
 }
 .accordion-header.active::after {
      transform: rotate(180deg);
@@ -222,6 +257,7 @@ h2.section-title {
     overflow: hidden;
     transition: max-height 0.3s ease-out;
     padding: 0 20px;
+    background: rgba(0,0,0,0.2);
 }
 .accordion-content ul {
     padding-left: 20px;
@@ -236,27 +272,25 @@ h2.section-title {
     margin-bottom: 40px;
 }
 .bonus-card {
-    background: var(--text-light);
-    padding: 30px;
-    border-radius: 15px;
     text-align: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 .bonus-card i {
     font-size: 3rem;
     color: var(--accent-color);
     margin-bottom: 15px;
+    text-shadow: 0 0 15px var(--accent-color);
 }
 
 /* ======== FOOTER ======== */
 footer {
-    background-color: var(--dark-bg);
+    background-color: #000;
     color: #aaa;
     padding: 40px 0;
     text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 footer a {
-    color: var(--text-light);
+    color: var(--accent-color);
     text-decoration: none;
 }
 footer a:hover {
